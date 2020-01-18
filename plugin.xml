@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-play-audio"
+        version="1.0.0">
+
+    <name>Cordova Plugin Play Audio</name>
+    <description>Cordova Plugin Play Audio</description>
+    <license>MIT</license>
+    <keywords>cordova,audio,nativeaudio,play,music</keywords>
+    <repo>https://github.com/distinctdan/cordova-plugin-play-audio.git</repo>
+<!--    <issue>https://issues.apache.org/jira/browse/CB/component/12320636</issue>-->
+
+    <js-module src="www/playAudio.js" name="PlayAudio">
+        <clobbers target="window.plugins.PlayAudio"/>
+    </js-module>
+
+    <engines>
+        <engine name="cordova" version=">=9" />
+        <engine name="cordova-android" version=">=8" />
+        <engine name="cordova-ios" version=">=5" />
+    </engines>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="PlayAudio">
+                <param name="android-package" value="org.apache.cordova.playAudio.PlayAudio"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/PlayAudio.java" target-dir="src/org/apache/cordova/playAudio" />
+
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml" >
+            <feature name="PlayAudio">
+                <param name="ios-package" value="PlayAudio"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/PlayAudio.h" />
+        <source-file src="src/ios/PlayAudio.m" />
+
+        <framework src="AVFoundation.framework" />
+    </platform>
+</plugin>
