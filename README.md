@@ -1,41 +1,23 @@
 
 ## Installation
-    cordova plugin add https://github.com/distinctdan/cordova-plugin-play-audio.git
+    cordova plugin add https://github.com/distinctdan/cordova-plugin-extra-events.git
 Tested platforms: Android 8+, iOS 11+
     
 ## Usage
-This is a simple plugin designed to play background music for your app. Html5 audio is currently (2019-11-21) not good enough because of deal breaker bugs in iOS, such as playing audio at the wrong sample rate in iOS 12, or html audio tags being totally broken when used with an audio context in iOS 13. This plugin plays audio using native libraries to get around these issues. It uses heavier native classes, so it's more suited for background audio, and less suited for lots of small sound effects. Multiple songs can be played at the same time because each song uses a separate player.
+This plugin provides access to extra lifecycle events that are useful for saving data before your app quits. This allows you to mostly work around the following issues with cordova:
+- iOS: The `onPause` event is never fired if the user activates the app switcher, then swipes up to kill the app.
+- Android: The `onPause` event is never fired if the user actives the "recent apps" switcher, then swipes to kill the app.
     
-### window.plugins.PlayAudio.playSong(songOptions, success?, error?)
-Plays a single song. Runs asynchronously because songs can take a bit of time to load initially (~100ms). Once a song is loaded, its player is cached so future plays will be much faster.
-```
-const songOptions = {
-    songId: string, // Unique string to identify this song.
-    songURL?: string, // Relative path to song in your www directory.
-    startOffset?: number, // Play start offset in seconds.
-    volume?: number; // 0 to 1. Required if using fadeInLen.
-    fadeInLen?: number, // Fade in length in seconds.
-}
-```
-### window.plugins.PlayAudio.pauseSongs(songIds, success?, error?)
-Pauses songs. On Android, you'll probably want to call this in an `onPause` callback to stop your app's audio. iOS auto-pauses and auto-resumes playing audio.
+### window.plugins.ExtraEvents.registerForEvents(eventCallback, error?)
+Registers a callback function to receive events. Returns an unregister function. Can be called with the following events:
 
-`songIds` is the array of the songIds you want to pause. Any songIds that haven't been played yet will be ignored.
+#### onWindowFocusChanged (Android only)
+This is called whenever your main activity gains or loses focus. This happens when your app launches, goes into the background, is interrupted by a dialog or alert, when the user opens the system UI, etc. See the android docs for more info: https://developer.android.com/reference/android/app/Activity.html#onWindowFocusChanged(boolean).
 
-### window.plugins.PlayAudio.setVolumes(volumeOptions, success?, error?)
-Used to set the volume of multiple songs at once. Any songIds that haven't been played yet will be ignored.
-```
-const volumeOptions = [
-    {songId: 'Song1', volume: 1},
-    {songId: 'Song2', volume: 0},
-];
-```
-### window.plugins.PlayAudio.registerForEvents(eventCallback?, error?)
-Use this method to listen for events. The audio interruption events are iOS only for now, and are useful for getting notified when iOS interrupts the audio context for things like an incoming call or Siri activation. The callback will be called with the following object:
+**Warning** If the user actives the app switcher quickly and immediately kills your app, this event might not have time to fire. Also, if the user kills the app and your callback is taking a long time to run, Android might kill it, so try to keep it as short as possible.
 ```
 {
-    eventName: 'SongEnded' | 'AudioInterruptionBegan' | 'AudioInterruptionEnded',
-    songId?: 'Song1', // Only passed for SongEnded event.
+    eventName: 'onWindowFocusChanged',
+    hasFocus: boolean,
 }
 ```
-**NOTE**: There is a current issue on iOS where if you close a javascript AudioContext, it will interrupt the native audio. It fires an `AudioInterruptionBegan` event, but never fires an `AudioInterruptionEnded` event. If this applies to you, you'll need to listen for the `AudioInterruptionBegan` event and manually call `playSong` again if the audio actually should restart, like if it's within maybe several seconds of the context closing. You don't want to restart the audio if the interruption is an incoming phonecall or Siri being activated, but there's unfortunately no way to tell that from the event alone.
