@@ -1,10 +1,10 @@
 {
-  "name": "cordova-plugin-device-motion",
-  "version": "3.0.0",
-  "description": "Cordova Device Motion Plugin",
+  "name": "cordova-plugin-extra-events",
+  "version": "1.0.0",
+  "description": "Cordova Plugin Extra Events",
   "types": "./types/index.d.ts",
   "cordova": {
-    "id": "cordova-plugin-device-motion",
+    "id": "cordova-plugin-extra-events",
     "platforms": [
       "android",
       "ios"
@@ -12,21 +12,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/distinctdan/cordova-plugin-device-motion"
+    "url": "https://github.com/distinctdan/cordova-plugin-extra-events"
   },
   "bugs": {
-    "url": "https://github.com/distinctdan/cordova-plugin-device-motion/issues"
+    "url": "https://github.com/distinctdan/cordova-plugin-extra-events/issues"
   },
   "keywords": [
     "cordova",
-    "device",
-    "motion",
+    "events",
     "ecosystem:cordova",
     "cordova-android",
     "cordova-ios"
   ],
   "author": "Daniel Stone",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "engines": {
     "cordovaDependencies": {
       "3.0.0": {

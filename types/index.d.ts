@@ -1,32 +1,14 @@
-interface IPlayAudioPlayOptions {
-    songId: string,
-    songURL?: string,
-    startOffset?: number,
-    volume?: number;
-    fadeInLen?: number,
+interface ICdvWindowFocusChangedEvent {
+    eventName: 'android:onWindowFocusChanged';
+    hasFocus: boolean;
 }
 
-interface IPlayAudioEvent {
-    eventName: 'SongEnded';
-    songId: string;
-}
+type CdvExtraEvent = ICdvWindowFocusChangedEvent;
 
 interface Window {
     plugins: {
-        PlayAudio: {
-            playSong: (playOptions: IPlayAudioPlayOptions,
-                       success?: () => void,
-                       error?: (err: any
-                ) => void) => void;
-            pauseSongs: (songIds: string[],
-                         success?: () => void,
-                         error?: (err: any) => void
-                ) => void;
-            setVolumes: (volOptions: {songId: string, volume: number}[],
-                         success?: () => void,
-                         error?: (err: any) => void
-                ) => void;
-            registerForEvents: (listener: (event: IPlayAudioEvent) => void,
+        ExtraEvents: {
+            registerForEvents: (listener: (event: CdvExtraEvent) => void,
                                 error?: (err: any) => void
                 ) => (() => void);
         }

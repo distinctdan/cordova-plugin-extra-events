@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-play-audio"
+        id="cordova-plugin-extra-events"
         version="1.0.0">
 
-    <name>Cordova Plugin Play Audio</name>
-    <description>Cordova Plugin Play Audio</description>
+    <name>Cordova Plugin Extra Events</name>
+    <description>Cordova Plugin for extra lifecycle events related to the app going to and leaving the background.</description>
     <license>MIT</license>
-    <keywords>cordova,audio,nativeaudio,play,music</keywords>
-    <repo>https://github.com/distinctdan/cordova-plugin-play-audio.git</repo>
+    <keywords>cordova,events,onPause,active,background</keywords>
+    <repo>https://github.com/distinctdan/cordova-plugin-extra-events</repo>
 <!--    <issue>https://issues.apache.org/jira/browse/CB/component/12320636</issue>-->
 
-    <js-module src="www/playAudio.js" name="PlayAudio">
-        <clobbers target="window.plugins.PlayAudio"/>
+    <js-module src="www/extraEvents.js" name="ExtraEvents">
+        <clobbers target="window.plugins.ExtraEvents"/>
     </js-module>
 
     <engines>
@@ -24,14 +24,14 @@
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="PlayAudio">
-                <param name="android-package" value="org.apache.cordova.playAudio.PlayAudio"/>
+            <feature name="ExtraEvents">
+                <param name="android-package" value="org.apache.cordova.extraEvents.ExtraEvents"/>
                 <param name="onload" value="true" />
             </feature>
         </config-file>
 
-        <source-file src="src/android/PlayAudio.java" target-dir="src/org/apache/cordova/playAudio" />
-
+        <source-file src="src/android/ExtraEvents.java" target-dir="src/org/apache/cordova/extraEvents" />
+        <source-file src="src/android/CdvExtraEventsWindowCallback.java" target-dir="src/org/apache/cordova/extraEvents" />
     </platform>
 
     <!-- ios -->
