@@ -47,7 +47,7 @@ public class ExtraEvents extends CordovaPlugin {
             try {
                 JSONObject event = new JSONObject();
                 event.put("hasFocus", hasFocus);
-                event.put("eventName", "android:onWindowFocusChanged");
+                event.put("eventName", "android_onWindowFocusChanged");
 
                 PluginResult result = new PluginResult(PluginResult.Status.OK, event);
                 result.setKeepCallback(true);

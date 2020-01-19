@@ -1,9 +1,19 @@
-interface ICdvWindowFocusChangedEvent {
-    eventName: 'android:onWindowFocusChanged';
+interface ICdvEventWindowFocusChanged {
+    eventName: 'android_onWindowFocusChanged';
     hasFocus: boolean;
 }
 
-type CdvExtraEvent = ICdvWindowFocusChangedEvent;
+interface ICdvEventAppWillResignActive {
+    eventName: 'iOS_appWillResignActive';
+}
+
+interface ICdvEventAppWillEnterForeground {
+    eventName: 'iOS_appWillEnterForeground';
+}
+
+type CdvExtraEvent = ICdvEventWindowFocusChanged
+    | ICdvEventAppWillResignActive
+    | ICdvEventAppWillEnterForeground;
 
 interface Window {
     plugins: {

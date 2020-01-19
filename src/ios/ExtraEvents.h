@@ -19,18 +19,14 @@
 
 #import <UIKit/UIKit.h>
 #import <Cordova/CDVPlugin.h>
-#import <AVFoundation/AVFoundation.h>
 
-@interface PlayAudio : CDVPlugin <AVAudioPlayerDelegate>
+@interface ExtraEvents : CDVPlugin
 {
 
 }
 
 - (void)pluginInitialize;
 
-- (void)playSong:(CDVInvokedUrlCommand*)command;
-- (void)pauseSongs:(CDVInvokedUrlCommand*)command;
-- (void)setVolumes:(CDVInvokedUrlCommand*)command;
 - (void)registerForEvents:(CDVInvokedUrlCommand*)command;
 
 @end

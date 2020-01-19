@@ -17,7 +17,7 @@ This is called whenever your main activity gains or loses focus. This happens wh
 **Warning** If the user actives the app switcher quickly and immediately kills your app, this event might not have time to fire. Also, if the user kills the app and your callback is taking a long time to run, Android might kill it, so try to keep it as short as possible.
 ```
 {
-    eventName: 'onWindowFocusChanged',
+    eventName: 'android_onWindowFocusChanged',
     hasFocus: boolean,
 }
 ```

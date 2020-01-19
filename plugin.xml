@@ -37,14 +37,14 @@
     <!-- ios -->
     <platform name="ios">
         <config-file parent="/*" target="config.xml" >
-            <feature name="PlayAudio">
-                <param name="ios-package" value="PlayAudio"/>
+            <feature name="ExtraEvents">
+                <param name="ios-package" value="ExtraEvents"/>
                 <param name="onload" value="true" />
             </feature>
         </config-file>
 
-        <header-file src="src/ios/PlayAudio.h" />
-        <source-file src="src/ios/PlayAudio.m" />
+        <header-file src="src/ios/ExtraEvents.h" />
+        <source-file src="src/ios/ExtraEvents.m" />
 
         <framework src="AVFoundation.framework" />
     </platform>
