@@ -1,10 +1,10 @@
 {
-  "name": "cordova-plugin-extra-events",
+  "name": "@spoonconsulting/cordova-plugin-extra-events",
   "version": "1.0.0",
   "description": "Cordova Plugin Extra Events",
   "types": "./types/index.d.ts",
   "cordova": {
-    "id": "cordova-plugin-extra-events",
+    "id": "@spoonconsulting/cordova-plugin-extra-events",
     "platforms": [
       "android",
       "ios"
@@ -12,10 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/distinctdan/cordova-plugin-extra-events"
+    "url": "https://github.com/spoonconsulting/cordova-plugin-extra-events"
   },
   "bugs": {
-    "url": "https://github.com/distinctdan/cordova-plugin-extra-events/issues"
+    "url": "https://github.com/spoonconsulting/cordova-plugin-extra-events/issues"
   },
   "keywords": [
     "cordova",
@@ -24,7 +24,7 @@
     "cordova-android",
     "cordova-ios"
   ],
-  "author": "Daniel Stone",
+  "author": "Daniel Stone & Spoon Consulting Ltd",
   "license": "MIT",
   "engines": {
     "cordovaDependencies": {

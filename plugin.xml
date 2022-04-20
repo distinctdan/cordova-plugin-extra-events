@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-extra-events"
+        id="@spoonconsulting/cordova-plugin-extra-events"
         version="1.0.0">
 
     <name>Cordova Plugin Extra Events</name>
     <description>Cordova Plugin for extra lifecycle events related to the app going to and leaving the background.</description>
     <license>MIT</license>
     <keywords>cordova,events,onPause,active,background</keywords>
-    <repo>https://github.com/distinctdan/cordova-plugin-extra-events</repo>
+    <repo>https://github.com/spoonconsulting/cordova-plugin-extra-events</repo>
 <!--    <issue>https://issues.apache.org/jira/browse/CB/component/12320636</issue>-->
 
     <js-module src="www/extraEvents.js" name="ExtraEvents">

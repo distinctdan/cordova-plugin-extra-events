@@ -1,6 +1,6 @@
 
 ## Installation
-    cordova plugin add https://github.com/distinctdan/cordova-plugin-extra-events.git
+    cordova plugin add @spoonconsulting/cordova-plugin-extra-events
 Tested platforms: Android 8+, iOS 11+
     
 ## Usage
